@@ -36,6 +36,7 @@ namespace RolsynSyntaxTreeAnalyzer
             if(result == true)
             {
                 this.txtProjectPath.Text = openFileDialog.FileName;
+                this.txtResult.Text = SyntaxTreeAnalyzer.SyntaxTreeAnalyzer.GetSyntaxTrees(openFileDialog.FileName);
             }
         }
     }

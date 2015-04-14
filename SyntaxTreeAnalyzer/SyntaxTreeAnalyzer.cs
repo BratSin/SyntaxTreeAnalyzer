@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Symbols;
@@ -15,10 +16,56 @@ namespace SyntaxTreeAnalyzer
         public SyntaxTreeAnalyzer()
         {
         }
+
+        private static List<string> excludeDirectories = new List<string>() { "\\bin", "\\obj", "\\Properties" };
             
-        public static void GetSyntaxTree(string filePath)
+        public static string GetSyntaxTrees(string projectPath)
         {
-            SyntaxTree tree = CSharpSyntaxTree.ParseFile(filePath);
+            StringBuilder result = new StringBuilder();
+            Dictionary<string, SyntaxTree> trees = getSyntaxTreesForFiles(projectPath);
+
+            foreach(string key in trees.Keys)
+            {
+                result.AppendLine(String.Format("{0}\t{1}", key, trees[key].ToString()));
+            }
+
+            return result.ToString();
+        }
+
+        public static string GetFilesFromProject(string projectPath)
+        {
+            return String.Join(Environment.NewLine, getFilesFromProject(projectPath).ToArray<string>());
+        }
+
+        private static List<string> getFilesFromProject(string projectPath)
+        {
+            List<string> result = new List<string>();
+
+            string projectFolderPath = Path.GetDirectoryName(projectPath);
+
+            foreach (string directory in Directory.GetDirectories(projectFolderPath, "*", SearchOption.AllDirectories)
+                .Where(s => { foreach (string str in excludeDirectories) { if (s.Contains(str)) return false; } return true; })
+                .Concat(new string[] { projectFolderPath }))
+            {
+                foreach(string file in Directory.GetFiles(directory, "*.cs", SearchOption.TopDirectoryOnly))
+                {
+                    result.Add(file);
+                }  
+            }
+
+            return result;
+        }
+        
+        private static Dictionary<string, SyntaxTree> getSyntaxTreesForFiles(string projectPath)
+        {
+            Dictionary<string, SyntaxTree> result = new Dictionary<string, SyntaxTree>();
+
+            foreach(string file in getFilesFromProject(projectPath))
+            {
+                result.Add(file, CSharpSyntaxTree.ParseFile(file));
+            }
+
+            return result;
         }
     }
 }

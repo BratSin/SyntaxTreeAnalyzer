@@ -67,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Docs\bulychev.pdf" />
+    <None Include="Docs\MI5-Ch8-Plotkin.pdf" />
+    <None Include="Docs\syrcose08.pdf" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

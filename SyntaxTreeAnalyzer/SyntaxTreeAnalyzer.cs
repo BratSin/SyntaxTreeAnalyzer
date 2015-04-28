@@ -32,6 +32,33 @@ namespace SyntaxTreeAnalyzer
             return result.ToString();
         }
 
+        public static string GetTrees(string projectPath)
+        {
+            StringBuilder result = new StringBuilder();
+            Dictionary<string, SyntaxTree> trees = getSyntaxTreesForFiles(projectPath);
+
+            foreach(string k in trees.Keys)
+            {
+                getTree(trees[k].GetRoot(), result, 0);
+
+                result.AppendLine();
+            }
+
+            return result.ToString();
+        }
+
+        private static void getTree(SyntaxNode node, StringBuilder buffer, int offset)
+        {
+            string result = new string('\t', offset);
+            result += node.ToString();
+            buffer.AppendLine(result);
+            
+            foreach(SyntaxNode n in node.ChildNodes())
+            {
+                getTree(n, buffer, offset + 1);
+            }
+        }
+
         public static string GetFilesFromProject(string projectPath)
         {
             return String.Join(Environment.NewLine, getFilesFromProject(projectPath).ToArray<string>());
@@ -68,4 +95,6 @@ namespace SyntaxTreeAnalyzer
             return result;
         }
     }
+
+    
 }

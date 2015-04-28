@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolsynSyntaxTreeAnalyzer", "RolsynSyntaxTreeAnalyzer\RolsynSyntaxTreeAnalyzer.csproj", "{423524EC-4556-45C8-9B84-992C81D40152}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxTreeAnalyzer", "SyntaxTreeAnalyzer\SyntaxTreeAnalyzer.csproj", "{CA71865C-DE92-49FC-8AD4-02A22D5BFFAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumbProject", "DumbProject\DumbProject.csproj", "{561708A9-F603-432C-A177-81F1992B9FD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,16 @@ Global
 		{CA71865C-DE92-49FC-8AD4-02A22D5BFFAF}.Release|Mixed Platforms.Build.0 = Release|x86
 		{CA71865C-DE92-49FC-8AD4-02A22D5BFFAF}.Release|x86.ActiveCfg = Release|x86
 		{CA71865C-DE92-49FC-8AD4-02A22D5BFFAF}.Release|x86.Build.0 = Release|x86
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{561708A9-F603-432C-A177-81F1992B9FD1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
